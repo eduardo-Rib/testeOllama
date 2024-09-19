@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.File;
 
-public class gerarTXT {
+public class GerarTXT {
     public static void gerarTexto(String response) throws IOException {
         try {
             File arquivo = new File("C:\\Users\\eduar\\OneDrive\\Área de Trabalho\\api\\testeOllama\\respostaOllama.txt");

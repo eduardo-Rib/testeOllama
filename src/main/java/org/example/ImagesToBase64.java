@@ -1,12 +1,11 @@
 package org.example;
 
-import org.json.JSONObject;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.file.Files;
 
-public class teste {
+public class ImagesToBase64 {
 
     public static void main(String[] args) throws IOException {
         String apiUrl = "http://localhost:11434/api/generate";

@@ -7,12 +7,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 //https://github.com/ollama/ollama/blob/main/docs/api.md#generate-a-completion
+//local: C:\Users\eduar\OneDrive\Área de Trabalho\api\documentos
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -64,7 +64,6 @@ public class Main {
             os.write(input, 0, input.length);
         }
 
-
         int codigio = conexao.getResponseCode();
         System.out.println("Response code = " + codigio);
 
@@ -81,7 +80,7 @@ public class Main {
         JSONObject jsonResponse = new JSONObject(response.toString());
         String responseText = jsonResponse.getString("response");
 
-        gerarTXT.gerarTexto(responseText);
+        GerarTXT.gerarTexto(responseText);
 
         conexao.disconnect();
     }
@@ -90,6 +89,5 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         System.out.print(pergunta);
         return scan.nextLine();
-        //local: C:\Users\eduar\OneDrive\Área de Trabalho\api\documentos
     }
 }
