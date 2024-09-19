@@ -2,10 +2,7 @@ package org.example;
 
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
@@ -13,84 +10,28 @@ import java.util.Scanner;
 
 //https://github.com/ollama/ollama/blob/main/docs/api.md#generate-a-completion
 
-//prompt: Colete da imagem o conjunto de numeros presente após o a sigla CPF.
+//prompt: Collect from the image the set of numbers present after the acronym CPF
 //local: C:\Users\eduar\OneDrive\Área de Trabalho\api\documentos\rg verso.jpeg
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
         //Define o modelo que será usado
         String nomeModelo = "llava";
 
+        String img = ImagesToBase64.encodeImageToBase64(new File("C:\\rg.jpeg"));
         //Define o prompt que será enviado para o modelo
+
         String promp = lerPromp("prompt: ");
 
         //Define o local da imagem a ser analisada
         //Converte a imagem para para Base64Encoded
-        String imagem = ImagesToBase64.convertImageToBase64(lerPromp("images: "));
+        //String imagem =ImagesToBase64.convertImageToBase64(lerPromp("images: "));
 
-        //Especifica o local da api do ollama
-        URL url = new URL("http://localhost:11434/api/generate");
-        //Abre a conexão com a api do ollama
-        HttpURLConnection conexao = (HttpURLConnection) url.openConnection();
+        String prompt = "what is in this image?";
 
-        //Define o metodo de requisição como POST
-        conexao.setRequestMethod("POST");
-
-        //Define o cabeçalho da requisição (header)
-        //Content-Type é o nome do cabeçalho que define o tipo da requisição
-        //application/json; define o tipo do do arquivo que será enviado oara o servidor
-        //utf-8 define o charset que esta sendo utilizado para codificar conteúdo da requisição
-        conexao.setRequestProperty("Content-Type", "application/json; utf-8");
-
-        //Accept é o nome do cabeçalho que define o tipo do retorno da requição
-        //application/json define que será retornado um arquivo JSON
-        conexao.setRequestProperty("Accept", "application/json");
-
-        //setDoOutput(true) stá dizendo que pretende enviar dados na requisição HTTP
-        // ou seja, que o corpo (body) da requisição terá conteúdo
-        //É necessário quando você deseja fazer requisições que envolvem o envio de dados (POST)
-        conexao.setDoOutput(true);
-
-        //Criando o corpo (body) da requisição
-        //Usando o String.format() para formatar a string, substintuindo os %s pelas variáveis
-        String body = String.format(
-                "{\"model\": \"%s\", \"messages\": [{\"role\": \"user\", \"content\": \"%s\", \"images\": [\"%s\"]}], \"stream\": false}", nomeModelo, promp, imagem
-                //"{\"model\": \"%s\", \"prompt\": \"%s\", \"stream\": false}", nomeModelo, promp
-        );
-
-
-        //O OutputStream permite enviar dados no corpo da requisição para o servidor
-        try(OutputStream os = conexao.getOutputStream()){
-            //O metodo OutputStream trabalha diretamente com bytes
-            //getBytes converte o body para um array de bytes
-            //StandardCharsets.UTF-8 faz os caracteres serem corretamente convertidos para bytes no formato UTF-8
-            byte[] input = body.getBytes(StandardCharsets.UTF_8);
-
-            //os.write() é usado para escrever os bytes no OutputStream
-            //oO seja, para enviar o conteúdo da variável body no corpo da requisição HTTP
-            //É passado o input (body), ponto inicial do array (0) e o ponto final(input.length)
-            os.write(input, 0, input.length);
-        }
-
-        int codigio = conexao.getResponseCode();
-        System.out.println("Response code = " + codigio);
-
-        BufferedReader in = new BufferedReader(new InputStreamReader(conexao.getInputStream(), StandardCharsets.UTF_8));
-        StringBuilder response = new StringBuilder();
-        String linha;
-        while ((linha = in.readLine()) != null){
-            response.append(linha);
-        }
-        in.close();
-
-        System.out.println("Response body: " + response.toString());
-
-        JSONObject jsonResponse = new JSONObject(response.toString());
-        String responseText = jsonResponse.getString("response");
+        String responseText = Ollama.GetResponse(nomeModelo, promp, img);
 
         GerarTXT.gerarTexto(responseText);
-
-        conexao.disconnect();
     }
 
     public static String lerPromp(String pergunta){
