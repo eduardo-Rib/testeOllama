@@ -18,9 +18,13 @@ public class Main {
     public static void main(String[] args) throws IOException {
         //Define o modelo que será usado
         String nomeModelo = "llava";
+
         //Define o prompt que será enviado para o modelo
         String promp = lerPromp("prompt: ");
-        String imagem = lerPromp("images: ");
+
+        //Define o local da imagem a ser analisada
+        //Converte a imagem para para Base64Encoded
+        String imagem = ImagesToBase64.convertImageToBase64(lerPromp("images: "));
 
         //Especifica o local da api do ollama
         URL url = new URL("http://localhost:11434/api/generate -d");
@@ -48,7 +52,8 @@ public class Main {
         //Criando o corpo (body) da requisição
         //Usando o String.format() para formatar a string, substintuindo os %s pelas variáveis
         String body = String.format(
-                "{\"model\": \"%s\", \"prompt\":\"%s\", \"images\": \"%s\", \"stream\": false}", nomeModelo, promp, imagem
+                "{\"model\": \"%s\", \"messages\": [{\"role\": \"user\", \"content\": \"%s\", \"images\": \"%s\"}]}", nomeModelo, promp, imagem
+                //"{\"model\": \"%s\", \"prompt\":\"%s\", \"images\": \"%s\", \"stream\": false}", nomeModelo, promp, imagem
         );
 
         //O OutputStream permite enviar dados no corpo da requisição para o servidor
