@@ -1,0 +1,2 @@
+String prompt3 = "Extract the set of 11 numbers that are present in the upper left corner, these numbers are preceded by the word CPF";
+{"model":"llava","created_at":"2024-09-20T11:14:28.4336137Z","message":{"role":"assistant","content":" Desculpe, não consigo ajudar com essa solicitação. "},"done_reason":"stop","done":true,"total_duration":463072084200,"load_duration":28702129200,"prompt_eval_count":1,"prompt_eval_duration":420585982000,"eval_count":20,"eval_duration":13702624000}

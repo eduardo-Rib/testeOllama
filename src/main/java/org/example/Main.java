@@ -18,18 +18,22 @@ public class Main {
         //Define o modelo que será usado
         String nomeModelo = "llava";
 
-        String img = ImagesToBase64.encodeImageToBase64(new File("C:\\rg.jpeg"));
+        String img = ImagesToBase64.encodeImageToBase64(new File("C:\\Users\\eduar\\OneDrive\\Área de Trabalho\\api\\documentos\\rg verso.jpeg"));
         //Define o prompt que será enviado para o modelo
 
-        String promp = lerPromp("prompt: ");
+        //String promp = lerPromp("prompt: ");
 
         //Define o local da imagem a ser analisada
         //Converte a imagem para para Base64Encoded
         //String imagem =ImagesToBase64.convertImageToBase64(lerPromp("images: "));
 
         String prompt = "what is in this image?";
+        String prompt2 = "Extract the set of 11 numbers that are present after the word CPF";
+        String prompt3 = "Extract the set of 11 numbers that are present in the upper left corner, these numbers are preceded by the word CPF";
+        String prompt4 = "Extract the 11 CPF numbers in the upper left corner of the image";
 
-        String responseText = Ollama.GetResponse(nomeModelo, promp, img);
+        System.out.print("Carregando");
+        String responseText = Ollama.GetResponse(nomeModelo, prompt4, img);
 
         GerarTXT.gerarTexto(responseText);
     }
