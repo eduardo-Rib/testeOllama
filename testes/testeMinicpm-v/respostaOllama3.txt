@@ -1,0 +1,3 @@
+String prompt5 = "Extract all text from image";
+
+{"model":"minicpm-v","created_at":"2024-09-20T19:09:16.2570406Z","message":{"role":"assistant","content":"\u003cdoc\u003e     DE    1983 AGOSTO OSEFO.29 REGISTRO \n     CPF   DNI REGISTRO GERAL REGISTER GENERAL GERAL 50.790.725-5 Data EXPEDICAO VIA EXPEDICAO DA06/2022 09/06/2022 CIVIL O \n     SUBPRIM    LV.A479/LIS.18F AOS JOSIDOS L.VA479 CN:LV:A47S/FLS.18N CAMPOS SP PRIMEIRO CANCIPS COMDOS \n   N/S/PI3/PASEP  NDIDADE PROFESSIONAL PAREAF \n     MILITAR \n     CNH    CNSK \u003c/doc\u003e"},"done_reason":"stop","done":true,"total_duration":906283479000,"load_duration":100988600,"prompt_eval_duration":783910298000,"eval_count":175,"eval_duration":122193894000}
