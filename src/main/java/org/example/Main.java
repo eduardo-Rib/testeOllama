@@ -15,7 +15,7 @@ public class Main {
         String nomeModelo = "minicpm-v";
 
 
-        String img = ImagesToBase64.encodeImageToBase64(new File("C:\\Users\\eduar\\OneDrive\\Área de Trabalho\\api\\documentos\\rg verso.jpeg"));
+        String img = ImagesToBase64.encodeImageToBase64(new File("C:\\Users\\eduar\\OneDrive\\Área de Trabalho\\api\\documentos\\rg frente.jpeg"));
         //Define o prompt que será enviado para o modelo
 
 
@@ -32,9 +32,12 @@ public class Main {
         String prompt6 = "Extract the set of 9 numbers that are present after the word 'Registro Geral'";
         String prompt5 = "Extract all text from image"; //Não é um bom prompt
         String prompt7 = "extract the sets of numbers present after the words CPF and RG";
+        String prompt8 = "extract the name present after the word nome:";
+        String prompt9 = "extract the two names present after the word filiação:";
+        String prompt10 = "extract the issuing authority of the document";
 
         System.out.print("Carregando...\n");
-        String responseText = Ollama.GetResponse(nomeModelo, prompt7, img);
+        String responseText = Ollama.GetResponse(nomeModelo, prompt10, img);
 
         GerarTXT.gerarTexto(responseText);
     }
