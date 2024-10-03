@@ -15,7 +15,7 @@ public class Main {
         String nomeModelo = "minicpm-v";
 
 
-        String img = ImagesToBase64.encodeImageToBase64(new File("C:\\Users\\eduar\\OneDrive\\Área de Trabalho\\api\\documentos\\rg frente.jpeg"));
+        String img = ImagesToBase64.encodeImageToBase64(new File("C:\\Users\\Eduardo Ribeiro\\Desktop\\api\\rg frente.jpeg"));
         //Define o prompt que será enviado para o modelo
 
 
@@ -37,7 +37,7 @@ public class Main {
         String prompt10 = "extract the issuing authority of the document";
 
         System.out.print("Carregando...\n");
-        String responseText = Ollama.GetResponse(nomeModelo, prompt10, img);
+        String responseText = Ollama.GetResponse(nomeModelo, prompt5, img);
 
         GerarTXT.gerarTexto(responseText);
     }

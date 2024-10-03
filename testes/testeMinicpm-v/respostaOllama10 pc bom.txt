@@ -1,0 +1,4 @@
+String prompt8 = "extract the name present after the word nome:";
+4 seg
+
+{"model":"minicpm-v","created_at":"2024-10-03T02:00:08.8215017Z","message":{"role":"assistant","content":"The name present after the word \"nome\" is \"Eduardo Fonseca Ribeiro.\""},"done_reason":"stop","done":true,"total_duration":3793334400,"load_duration":19084600,"prompt_eval_duration":3170062000,"eval_count":22,"eval_duration":586104000}

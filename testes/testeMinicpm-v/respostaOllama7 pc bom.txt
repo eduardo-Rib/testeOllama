@@ -1,0 +1,4 @@
+String prompt2 = "Extract the set of 11 numbers that are present after the word CPF";
+4 seg
+
+{"model":"minicpm-v","created_at":"2024-10-03T01:54:04.4953909Z","message":{"role":"assistant","content":"400049858/42"},"done_reason":"stop","done":true,"total_duration":3498229700,"load_duration":19986400,"prompt_eval_duration":3122242000,"eval_count":13,"eval_duration":336691000}
