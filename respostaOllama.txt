@@ -1,4 +1,1 @@
-String prompt9 = "extract the two names present after the word filiação:";
-4 seg
-
-{"model":"minicpm-v","created_at":"2024-10-03T02:01:29.2945893Z","message":{"role":"assistant","content":"The two names present after the word filiação are \"Valter Faria Ribeiro\" and \"Leila Cristina da Fonseca Ribeiro.\""},"done_reason":"stop","done":true,"total_duration":4057762800,"load_duration":20942800,"prompt_eval_duration":3131192000,"eval_count":33,"eval_duration":884046000}
+{"model":"minicpm-v","created_at":"2024-10-03T18:08:28.5079486Z","message":{"role":"assistant","content":"10/12/2005"},"done_reason":"stop","done":true,"total_duration":76143176900,"load_duration":11479800,"prompt_eval_duration":74664671000,"eval_count":11,"eval_duration":1451958000}
