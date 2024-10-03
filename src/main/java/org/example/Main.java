@@ -11,7 +11,7 @@ public class Main {
         String modelo = "minicpm-v";
 
         String frente = ImagesToBase64.encodeImageToBase64(new File("C:\\Users\\aluno\\Desktop\\api\\rg frente.jpeg"));
-        String verso = ImagesToBase64.encodeImageToBase64(new File("C:\\Users\\aluno\\Desktop\\api\\rg frente.jpeg"));
+        String verso = ImagesToBase64.encodeImageToBase64(new File("C:\\Users\\aluno\\Desktop\\api\\rg verso.jpeg"));
 
         System.out.print("Carregando...\n");
         String cpf = getContent(Ollama.GetResponse(modelo, "return the set of 11 numbers that are present after the word CPF", verso));
