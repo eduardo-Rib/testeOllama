@@ -1,5 +1,11 @@
 package org.example;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
+
 public class RG {
 
     private String cpf;
@@ -36,6 +42,20 @@ public class RG {
         System.out.println("Data de Nascimento: " + dataNascimento);
         System.out.println("Naturalidade: " + naturalidade);
         System.out.println("--------------------------");
+    }
+
+    public HashMap<String,String> toHashMap() {
+        HashMap<String,String> atributos = new HashMap<>();
+        atributos.put("cpf", cpf);
+        atributos.put("rg", rg);
+        atributos.put("dataExpedicao", dataExpedicao);
+        atributos.put("nome", nome);
+        atributos.put("pai", pai);
+        atributos.put("mae", mae);
+        atributos.put("orgaoExpedidor", orgaoExpeditor);
+        atributos.put("dataNascimento", dataNascimento);
+        atributos.put("naturalidade", naturalidade);
+        return atributos;
     }
 
     public String getCpf() {
