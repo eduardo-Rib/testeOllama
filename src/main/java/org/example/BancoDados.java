@@ -15,6 +15,44 @@ public class BancoDados {
 
     private static Connection con;
 
+    public static void saveToDatabase2(RG rg) throws SQLException {
+        HashMap<String, String> attributes = rg.toHashMap();
+        StringBuilder sql = new StringBuilder("INSERT INTO rg (");
+        StringBuilder placeholders = new StringBuilder("VALUES (");
+
+        int count = 0;
+
+        for (Map.Entry<String, String> entry : attributes.entrySet()) {
+            if (count > 0) {
+                sql.append(", ");
+                placeholders.append(", ");
+            }
+
+            sql.append(entry.getKey());
+            placeholders.append("?");
+
+            count++;
+        }
+
+        sql.append(") ");
+        placeholders.append(")");
+        sql.append(placeholders);
+
+        Conexao();
+        PreparedStatement stmt = con.prepareStatement(sql.toString());
+
+        int index = 1;
+        for (Map.Entry<String, String> entry : attributes.entrySet()) {
+            stmt.setString(index, entry.getValue());
+            index++;
+        }
+        System.out.println(stmt);
+        stmt.executeUpdate();
+
+        stmt.close();
+        Desconectar();
+    }
+
     public static void saveToDatabase(RG rg) throws SQLException {
         HashMap<String,String> attributes = rg.toHashMap();
         StringBuilder sql = new StringBuilder("INSERT INTO rg (");
@@ -29,9 +67,7 @@ public class BancoDados {
             }
 
             sql.append(entry.getKey());
-            values.append("\"");
-            values.append(entry.getValue());
-            values.append("\"");
+            values.append("\"" + entry.getValue() + "\"");
 
             count++;
         }
